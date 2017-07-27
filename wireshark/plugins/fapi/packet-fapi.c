@@ -42,6 +42,21 @@ static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dciformat						= -1;
 static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_cceIndex						= -1;
 static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_rnti							= -1;
 static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu							= -1;
+
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlvl					= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype				= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_mcs 						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rv						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding					= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_ndi						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc					= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_tpc						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_dai						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_txpower					= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype					= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_padding					= -1;
+
 static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a						= -1;
 static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_aggrlvl					= -1;
 static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_vrbassignment				= -1;
@@ -59,6 +74,32 @@ static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_prachmaskidx	
 static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rntitype					= -1;
 static int hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_padding					= -1;
 
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu							= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pdulen						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pduidx						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rnti							= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_resallocationtype					= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_vrbassignment					= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rbcoding						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_mcs							= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rv							= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transportblocks					= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_tb2cwswapflag					= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transmissionscheme					= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numlayers						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numsubbands						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_uecategory						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pa							= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex				= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_ngap							= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_nprb							= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numrbpersubband					= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numbfVector						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_subbandInfo						= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo				= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_subbandidx			= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_numantenna			= -1;
+static int hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_bfvalueperantenna		= -1;
 
 static gint ett_fapi_message_type                       = -1;
 static gint ett_fapi_message_len                        = -1;
@@ -89,6 +130,21 @@ static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dciformat			= -1;
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_cceIndex			= -1;
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_rnti				= -1;
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu			= -1;
+
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1			= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlvl 		= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype 	= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_mcs 		= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rv			= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding		= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_ndi			= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc		= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_tpc			= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_dai			= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_txpower		= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype		= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_padding		= -1;
+
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a			= -1;
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_aggrlvl 		= -1;
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_vrbassignment 	= -1;
@@ -106,6 +162,33 @@ static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_txpower		= 
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_prachmaskidx	= -1;
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rntitype		= -1;
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_padding		= -1;
+
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu							= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pdulen						= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pduidx						= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rnti						= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_resallocationtype					= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_vrbassignment					= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rbcoding						= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_mcs						= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rv							= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transportblocks					= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_tb2cwswapflag					= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transmissionscheme					= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numlayers						= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numsubbands					= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_uecategory						= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pa							= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex				= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_ngap						= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_nprb						= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numrbpersubband					= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numbfVector					= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_subbandInfo					= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo				= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_subbandidx			= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_numantenna			= -1;
+static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_bfvalueperantenna		= -1;
 
 static const value_string message_id_vals[] = {
     { 0x00, "PARAM.request" },
@@ -150,6 +233,12 @@ static const value_string dlconfig_req_dciformat_vals[] = {
 	{6, "2A"},
 };
 
+static const value_string dlconfig_req_dci1_resallocationtype_vals[] = {
+	{0, "Type 0"},
+	{1, "Type 1"},
+	{2, "Type 2"},
+};
+
 static const value_string dlconfig_req_dci1a_vrbassignment_vals[] = {
 	{0, "localized"},
 	{1, "distributed"},
@@ -159,6 +248,27 @@ static const value_string dlconfig_req_dci1a_rntitype_vals[] = {
 	{1, "C-RNTI"},
 	{2, "RA-RNTI, P-RNTI or SI-RNTI"},
 	{3, "SPS-RNTI"},
+};
+
+static const value_string dlconfig_req_dlsch_txscheme_vals[] = {
+	{0, "Single Antenna Port 0"},
+	{1, "Transmit Diversity"},
+	{2, "Large Delay CDD"},
+	{3, "Closed Loop Spatial Multiplexing"},
+	{4, "Multi-User MIMO"},
+	{5, "Closed Loop Rank 1 Precoding"},
+	{6, "Single Antenna Port 5"},
+};
+
+static const value_string dlconfig_req_dlsch_pa_vals[] = {
+	{0, "-6 dB"},
+	{1, "-4.77 dB"},
+	{2, "-3 dB"},
+	{3, "-1.77 dB"},
+	{4, "0 dB"},
+	{5, "1 dB"},
+	{6, "2 dB"},
+	{7, "3 dB"},
 };
 
 static int dissect_fapi_subframe_sfnsf(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint offset _U_)
@@ -174,6 +284,100 @@ static int dissect_fapi_subframe_sfnsf(tvbuff_t *tvb, packet_info *pinfo, proto_
         offset += 2;
 
         return tvb_captured_length(tvb);
+}
+
+static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint offset _U_, guint8 pdu_size _U_)
+{
+    proto_item *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1, tvb, offset, pdu_size, ENC_NA);
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlevel_tree =
+	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlvl);
+
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlevel_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlvl, tvb, offset, 1, ENC_NA);
+
+    offset += 1;
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype_tree =
+	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype);
+
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype, tvb, offset, 1, ENC_NA);
+
+    offset += 1;
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_mcs_1_tree =
+	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_mcs);
+
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_mcs_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_mcs, tvb, offset, 1, ENC_NA);
+
+    offset += 1;
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_redundancyversion_1_tree =
+	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rv);
+
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_redundancyversion_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rv, tvb, offset, 1, ENC_NA);
+
+    offset += 1;
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding_tree =
+	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding);
+
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding, tvb, offset, 4, ENC_BIG_ENDIAN);
+
+    offset += 4;
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_ndi_1_tree =
+	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_ndi);
+
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_ndi_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_ndi, tvb, offset, 1, ENC_NA);
+
+    offset += 1;
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc_tree =
+	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc);
+
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc, tvb, offset, 1, ENC_NA);
+
+    offset += 1;
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_tpc_tree =
+	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_tpc);
+
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_tpc_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_tpc, tvb, offset, 1, ENC_NA);
+
+    offset += 1;
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_dai_tree =
+	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_dai);
+
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_dai_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_dai, tvb, offset, 1, ENC_NA);
+
+    offset += 1;
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_txpower_tree =
+	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_txpower);
+
+    proto_item *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_txpower_item =
+	    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_txpower_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_txpower, tvb, offset, 2, ENC_BIG_ENDIAN);
+    gint16 txPower = tvb_get_guint16(tvb, offset, ENC_BIG_ENDIAN);
+    proto_item_append_text(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_txpower_item, " (%g dBm)", (float)(txPower - 6000)/1000);
+
+    offset += 2;
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype_tree =
+	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype);
+
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype, tvb, offset, 1, ENC_NA);
+
+    offset += 1;
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_padding_tree =
+	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_padding);
+
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_padding_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_padding, tvb, offset, 1, ENC_NA);
+
+    offset += 1;
+
+    return tvb_captured_length(tvb);
 }
 
 static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint offset _U_, guint8 pdu_size _U_) 
@@ -291,6 +495,164 @@ static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a(tvbuff_t
     return tvb_captured_length(tvb);
 }
 
+static int dissect_fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint *offset)
+{
+    guint8 pdu_size = 2 * (tvb_get_guint8(tvb, *offset) + 1);
+
+    proto_item *fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_item 
+	    = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo, tvb, *offset, pdu_size, ENC_NA);
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_subbandidx_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_item,
+		    ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_subbandidx);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_subbandidx_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_subbandidx,
+		    tvb, *offset, 1, ENC_NA);
+    *offset += 1;
+
+    proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_numantenna_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_item,
+		    ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_numantenna);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_numantenna_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_numantenna,
+		    tvb, *offset, 1, ENC_NA);
+
+    guint8 numAntenna = tvb_get_guint8(tvb, *offset);
+    *offset += 1;
+
+    if (numAntenna) {
+        proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_bfvalueperantenna_item = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_item,
+		    ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_bfvalueperantenna);
+        proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_bfvalueperantenna_item, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_bfvalueperantenna,
+		    tvb, *offset, 2*numAntenna, ENC_NA);
+
+	*offset += (2*numAntenna); // 16 bits per antenna
+    }
+    return tvb_captured_length(tvb);
+}
+
+static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint offset _U_, guint8 pdu_size _U_)
+{
+	proto_item *fapi_dlconfig_pdu_info_pduunion_dlschpdu_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu, tvb, offset, pdu_size, ENC_NA);
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_pdulen_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pdulen);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_pdulen_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pdulen, tvb, offset, 2, ENC_BIG_ENDIAN);
+
+	offset += 2;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_pduidx_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pduidx);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_pduidx_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pduidx, tvb, offset, 2, ENC_BIG_ENDIAN);
+
+	offset += 2;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_rnti_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rnti);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_rnti_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rnti, tvb, offset, 2, ENC_BIG_ENDIAN);
+
+	offset += 2;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_resallocationtype_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_resallocationtype);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_resallocationtype_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_resallocationtype, tvb, offset, 1, ENC_NA);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_vrbassignment_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_vrbassignment);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_vrbassignment_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_vrbassignment, tvb, offset, 1, ENC_NA);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_rbcoding_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rbcoding);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_rbcoding_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rbcoding, tvb, offset, 4, ENC_BIG_ENDIAN);
+
+	offset += 4;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_mcs_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_mcs);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_mcs_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_mcs, tvb, offset, 1, ENC_NA);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_rv_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rv);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_rv_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rv, tvb, offset, 1, ENC_NA);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_transportblocks_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transportblocks);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_transportblocks_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transportblocks, tvb, offset, 1, ENC_NA);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_tb2cwswapflag_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_tb2cwswapflag);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_tb2cwswapflag_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_tb2cwswapflag, tvb, offset, 1, ENC_NA);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_transmissionscheme_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transmissionscheme);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_transmissionscheme_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transmissionscheme, tvb, offset, 1, ENC_NA);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_numlayers_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numlayers);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_numlayers_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numlayers, tvb, offset, 1, ENC_NA);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_numsubbands_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numsubbands);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_numsubbands_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numsubbands, tvb, offset, 1, ENC_NA);
+
+	guint8 numSubBands = tvb_get_guint8(tvb, offset);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_uecategory_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_uecategory);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_uecategory_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_uecategory, tvb, offset, 1, ENC_NA);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_pa_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pa);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_pa_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pa, tvb, offset, 1, ENC_NA);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex, tvb, offset, 1, ENC_NA);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_ngap_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_ngap);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_ngap_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_ngap, tvb, offset, 1, ENC_NA);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_nprb_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_nprb);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_nprb_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_nprb, tvb, offset, 1, ENC_NA);
+
+	offset += 1;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_numrbpersubband_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numrbpersubband);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_numrbpersubband_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numrbpersubband, tvb, offset, 2, ENC_BIG_ENDIAN);
+
+	offset += 2;
+
+	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_numbfvectors_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numbfVector);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_numbfvectors_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numbfVector, tvb, offset, 2, ENC_BIG_ENDIAN);
+
+	guint16 numBfVectors = tvb_get_guint16(tvb, offset, ENC_BIG_ENDIAN);
+
+	offset += 2;
+
+	if (numSubBands) {
+
+	   proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_subbandinfo_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_subbandInfo);
+	   proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_subbandinfo_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_subbandInfo, tvb, offset, numSubBands, ENC_BIG_ENDIAN);
+
+	   offset += numSubBands;
+        }
+
+	if (numBfVectors) {
+	   guint16 i;
+	   for (i = 0; i < numBfVectors; i++) {
+                proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_bfvectors_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo);
+		dissect_fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo(tvb, pinfo, fapi_dlconfig_pdu_info_pduunion_dlschpdu_bfvectors_tree, data, &offset);
+	   }
+	}
+	return tvb_captured_length(tvb);
+}
+
 static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint offset _U_, guint8 pdu_size _U_)
 {
     guint8 dciFormat = tvb_get_guint8(tvb, offset);
@@ -298,29 +660,30 @@ static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu(tvbuff_t *tvb, pac
     proto_item *fapi_dlconfig_pdu_info_pduunion_dcipdu_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu, tvb, offset, pdu_size, ENC_NA);
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dciformat_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dciformat);
-
     proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dciformat_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dciformat, tvb, offset, 1, ENC_NA);
 
     offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_cceindex_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_cceIndex);
-
     proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_cceindex_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_cceIndex, tvb, offset, 1, ENC_NA);
 
     offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_rnti_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_rnti);
-
     proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_rnti_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_rnti, tvb, offset, 2, ENC_BIG_ENDIAN);
 
     offset += 2;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu);
-
     proto_item *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_item = 
 	    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu, tvb, offset, pdu_size - 4, ENC_NA);
 
     switch (dciFormat) {
+	case 0: {
+	    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_tree =
+		    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1);
+	    dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1(tvb, pinfo, fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_tree, data, offset, pdu_size - offset);
+	}
 	case 1: {
 	    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_tree = 
 		    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a);
@@ -369,6 +732,10 @@ static int dissect_fapi_dlconfig_pdu_info(tvbuff_t *tvb, packet_info *pinfo, pro
 	        dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu(tvb, pinfo, fapi_dlconfig_pdu_info_pduunion_dcipdu_tree, data, offset, pdu_size - 4);
 	    }
 	    break;
+	    case 3: {
+                proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu);
+	        dissect_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu(tvb, pinfo, fapi_dlconfig_pdu_info_pduunion_dlschpdu_tree, data, offset, pdu_size - 4);
+	    }
 	    default:
 		    break;
     } /* switch (pdu_type) */
@@ -572,11 +939,27 @@ proto_register_fapi(void)
 	{ &hf_fapi_dlconfig_req_pdu_info_pdusize, {"pduSize", "fapi.dlconfig_req.dlConfigPDUInfo.pduSize", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
 	{ &hf_fapi_dlconfig_req_pdu_info_pdupadding, {"padding", "fapi.dlconfig_req.dlConfigPDUInfo.padding", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL } },
 	{ &hf_fapi_dlconfig_req_pdu_info_pduunion, {"dlConfigPDUInfoUnion", "fapi.dlconfig_req.dlConfigPDUInfo.union", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL } },
+
 	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu, {"DCIPdu", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL } },
 	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dciformat, {"dciFormat", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciFormat", FT_UINT8, BASE_DEC, (const void *)&dlconfig_req_dciformat_vals, 0x0, NULL, HFILL } },
 	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_cceIndex, {"cceIndex", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.cceIndex", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
 	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_rnti, {"rnti", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.rnti", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL } },
 	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu, {"dciPdu", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL } },
+
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1, {"dci 1", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlvl, {"aggregationLevel", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1.aggregationLevel", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype, {"resAllocationType", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1.vrbAssignment", FT_UINT8, BASE_DEC, (const void *)&dlconfig_req_dci1_resallocationtype_vals, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_mcs, {"mcs_1", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1.mcs_1", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rv, {"redundancyVersion_1", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1.redundancyVersion_1", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding, {"rbCoding", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1.rbCoding", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_ndi, {"newDataIndicator_1", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1.newDataIndicator_1", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc, {"harqProcessNum", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1.harqProcessNum", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_tpc, {"tpc", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1.tpc", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_dai, {"dlAssignmentIndex", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1.dlAssignmentIndex", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_txpower, {"txPower", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1.txPower", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype, {"rntiType", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1.rntiType", FT_UINT8, BASE_DEC, (const void *)&dlconfig_req_dci1a_rntitype_vals, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_padding, {"padding", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1.padding", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL } },
+
 	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a, {"dci 1A", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1A", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL } },
 	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_aggrlvl, {"aggregationLevel", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1A.aggregationLevel", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
 	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_vrbassignment, {"vrbAssignment", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1A.vrbAssignment", FT_UINT8, BASE_DEC, (const void *)&dlconfig_req_dci1a_vrbassignment_vals, 0x0, NULL, HFILL } },
@@ -593,6 +976,31 @@ proto_register_fapi(void)
 	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_prachmaskidx, {"PRACHMaskIndex", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1A.pRACHMaskIndex", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
 	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rntitype, {"rntiType", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1A.rntiType", FT_UINT8, BASE_DEC, (const void *)&dlconfig_req_dci1a_rntitype_vals, 0x0, NULL, HFILL } },
 	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_padding, {"padding", "fapi.dlconfig_req.dlConfigPDUInfo.union.DCIPdu.dciPdu.1A.padding", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL } },
+
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu, {"DLSCHPdu", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pdulen, {"dlschPduLen", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.dlschPduLen", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pduidx, {"pduIndex", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.pduIndex", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rnti, {"rnti", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.rnti", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_resallocationtype, {"resAllocationType", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.resAllocationType", FT_UINT8, BASE_DEC, (const void *)&dlconfig_req_dci1_resallocationtype_vals, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_vrbassignment, {"vrbAssignmentFlag", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.vrbAssignmentFlag", FT_UINT8, BASE_DEC, (const void *)&dlconfig_req_dci1a_vrbassignment_vals, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rbcoding, {"rbCoding", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.rbCoding", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_mcs, {"mcs", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.mcs", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rv, {"redundancyVersion", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.redundancyVersion", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transportblocks, {"transportBlocks", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.transportBlocks", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_tb2cwswapflag, {"tbToCodeWordSwapFlag", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.tbToCodeWordSwapFlag", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transmissionscheme, {"transmissionScheme", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.transmissionScheme", FT_UINT8, BASE_DEC, (const void *)&dlconfig_req_dlsch_txscheme_vals, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numlayers, {"numOfLayers", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.numOfLayers", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numsubbands, {"numOfSubBands", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.numOfSubBands", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_uecategory, {"ueCategoryCapacity", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.ueCategoryCapacity", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pa, {"pA", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.pA", FT_UINT8, BASE_DEC, (const void *)&dlconfig_req_dlsch_pa_vals, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex, {"deltaPowerOffsetAIndex", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.deltaPowerOffsetAIndex", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_ngap, {"nGap", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.nGap", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_nprb, {"nPRB", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.nPRB", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numrbpersubband, {"numRbPerSubBand", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.numRbPerSubBand", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numbfVector, {"numBfVector", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.numBfVector", FT_UINT8, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_subbandInfo, {"subBandInfo", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.subBandInfo", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo, {"bfVector", "fapi.dlconfig_req.dlConfigPDUInfo.union.DLSCHPdu.bfVector", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL } },
+
     };
 
     static gint *ett[] = {
@@ -622,11 +1030,27 @@ proto_register_fapi(void)
 	&ett_fapi_dlconfig_req_pdu_info_pdusize,
 	&ett_fapi_dlconfig_req_pdu_info_pdupadding,
 	&ett_fapi_dlconfig_req_pdu_info_pduunion,
+
 	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu,
 	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dciformat,
 	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_cceIndex,
 	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_rnti,
 	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu,
+
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1,
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlvl,
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype,
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_mcs,
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rv,
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding,
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_ndi,
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc,
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_tpc,
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_dai,
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_txpower,
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype,
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_padding,
+
 	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a,
 	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_aggrlvl,
 	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_vrbassignment,
@@ -643,6 +1067,33 @@ proto_register_fapi(void)
 	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_prachmaskidx,
 	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rntitype,
 	&ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_padding,
+
+	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu,
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pdulen,
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pduidx,
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rnti,
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_resallocationtype,
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_vrbassignment,
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rbcoding,
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_mcs,							 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rv,							 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transportblocks,					 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_tb2cwswapflag,					 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transmissionscheme,					 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numlayers,						 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numsubbands,					 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_uecategory,						 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pa,							 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex,				 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_ngap,						 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_nprb,						 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numrbpersubband,					 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numbfVector,					 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_subbandInfo,					 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo,				 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_subbandidx,			 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_numantenna,			 
+  	&ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo_bfvalueperantenna,
     };
 
     proto_fapi = proto_register_protocol ("FAPI", "FAPI", "fapi");
