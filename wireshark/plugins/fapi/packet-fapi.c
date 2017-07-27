@@ -1,9 +1,3 @@
-/**
- *
- * Copyright (c) Makarand Kulkarni, 2017-18 (makarand@lekhawireless.com)
- *
- * see license file for licensing terms
- */
 #include "config.h"
 
 #include <epan/packet.h>
@@ -148,7 +142,6 @@ static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_padding		= -
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a			= -1;
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_aggrlvl 		= -1;
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_vrbassignment 	= -1;
-
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_mcs 		= -1;
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rv			= -1;
 static gint ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rbcoding		= -1;
@@ -271,226 +264,226 @@ static const value_string dlconfig_req_dlsch_pa_vals[] = {
 	{7, "3 dB"},
 };
 
-static int dissect_fapi_subframe_sfnsf(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint offset _U_)
+static int dissect_fapi_subframe_sfnsf(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint *offset _U_)
 {
-        proto_item *fapi_subframe_ind_sfnsf_item = proto_tree_add_item(tree, hf_fapi_subframe_ind_sfnsf, tvb, offset, 2, ENC_NA);
+        proto_item *fapi_subframe_ind_sfnsf_item = proto_tree_add_item(tree, hf_fapi_subframe_ind_sfnsf, tvb, *offset, 2, ENC_NA);
 
         proto_tree *fapi_subframe_ind_sfnsf_sfn_tree = proto_item_add_subtree(fapi_subframe_ind_sfnsf_item, ett_fapi_subframe_ind_sfnsf_sfn);
-        proto_tree_add_item(fapi_subframe_ind_sfnsf_sfn_tree, hf_fapi_subframe_ind_sfnsf_sfn, tvb, offset, 2, ENC_BIG_ENDIAN);
+        proto_tree_add_item(fapi_subframe_ind_sfnsf_sfn_tree, hf_fapi_subframe_ind_sfnsf_sfn, tvb, *offset, 2, ENC_BIG_ENDIAN);
 
         proto_tree *fapi_subframe_ind_sfnsf_sf_tree = proto_item_add_subtree(fapi_subframe_ind_sfnsf_item, ett_fapi_subframe_ind_sfnsf_sf);
-        proto_tree_add_item(fapi_subframe_ind_sfnsf_sf_tree, hf_fapi_subframe_ind_sfnsf_sf, tvb, offset, 2, ENC_BIG_ENDIAN);
+        proto_tree_add_item(fapi_subframe_ind_sfnsf_sf_tree, hf_fapi_subframe_ind_sfnsf_sf, tvb, *offset, 2, ENC_BIG_ENDIAN);
 
-        offset += 2;
+        *offset += 2;
 
         return tvb_captured_length(tvb);
 }
 
-static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint offset _U_, guint8 pdu_size _U_)
+static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint *offset _U_, guint8 pdu_size _U_)
 {
-    proto_item *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1, tvb, offset, pdu_size, ENC_NA);
+    proto_item *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1, tvb, *offset, pdu_size, ENC_NA);
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlevel_tree =
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlvl);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlevel_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlvl, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlevel_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_aggrlvl, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype_tree =
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_resallocationtype, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_mcs_1_tree =
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_mcs);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_mcs_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_mcs, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_mcs_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_mcs, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_redundancyversion_1_tree =
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rv);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_redundancyversion_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rv, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_redundancyversion_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rv, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding_tree =
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding, tvb, offset, 4, ENC_BIG_ENDIAN);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rbcoding, tvb, *offset, 4, ENC_BIG_ENDIAN);
 
-    offset += 4;
+    *offset += 4;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_ndi_1_tree =
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_ndi);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_ndi_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_ndi, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_ndi_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_ndi, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc_tree =
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_harqproc, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_tpc_tree =
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_tpc);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_tpc_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_tpc, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_tpc_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_tpc, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_dai_tree =
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_dai);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_dai_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_dai, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_dai_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_dai, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_txpower_tree =
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_txpower);
 
     proto_item *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_txpower_item =
-	    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_txpower_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_txpower, tvb, offset, 2, ENC_BIG_ENDIAN);
-    gint16 txPower = tvb_get_guint16(tvb, offset, ENC_BIG_ENDIAN);
+	    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_txpower_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_txpower, tvb, *offset, 2, ENC_BIG_ENDIAN);
+    gint16 txPower = tvb_get_guint16(tvb, *offset, ENC_BIG_ENDIAN);
     proto_item_append_text(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_txpower_item, " (%g dBm)", (float)(txPower - 6000)/1000);
 
-    offset += 2;
+    *offset += 2;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype_tree =
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_rntitype, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_padding_tree =
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_padding);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_padding_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_padding, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_padding_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1_padding, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     return tvb_captured_length(tvb);
 }
 
-static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint offset _U_, guint8 pdu_size _U_) 
+static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint *offset _U_, guint8 pdu_size _U_) 
 {
-    proto_item *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a, tvb, offset, pdu_size, ENC_NA);
+    proto_item *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a, tvb, *offset, pdu_size, ENC_NA);
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_aggrlevel_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_aggrlvl);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_aggrlevel_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_aggrlvl, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_aggrlevel_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_aggrlvl, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
     
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_vrbassignment_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_vrbassignment);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_vrbassignment_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_vrbassignment, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_vrbassignment_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_vrbassignment, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
      
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_mcs_1_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_mcs);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_mcs_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_mcs, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_mcs_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_mcs, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_redundancyversion_1_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rv);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_redundancyversion_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rv, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_redundancyversion_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rv, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_rbcoding_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rbcoding);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_rbcoding_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rbcoding, tvb, offset, 4, ENC_BIG_ENDIAN);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_rbcoding_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rbcoding, tvb, *offset, 4, ENC_BIG_ENDIAN);
 
-    offset += 4;
+    *offset += 4;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_ndi_1_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_ndi);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_ndi_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_ndi, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_ndi_1_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_ndi, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_harqproc_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_harqproc);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_harqproc_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_harqproc, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_harqproc_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_harqproc, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_tpc_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_tpc);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_tpc_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_tpc, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_tpc_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_tpc, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_dai_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_dai);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_dai_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_dai, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_dai_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_dai, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_allocprach_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_allocprach);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_allocprach_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_allocprach, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_allocprach_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_allocprach, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_preambleidx_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_preambleidx);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_preambleidx_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_preambleidx, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_preambleidx_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_preambleidx, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_txpower_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_txpower);
 
     proto_item *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_txpower_item =
-	    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_txpower_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_txpower, tvb, offset, 2, ENC_BIG_ENDIAN);
-    gint16 txPower = tvb_get_guint16(tvb, offset, ENC_BIG_ENDIAN);
+	    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_txpower_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_txpower, tvb, *offset, 2, ENC_BIG_ENDIAN);
+    gint16 txPower = tvb_get_guint16(tvb, *offset, ENC_BIG_ENDIAN);
     proto_item_append_text(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_txpower_item, " (%g dBm)", (float)(txPower - 6000)/1000);
 
-    offset += 2;
+    *offset += 2;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_prachmaskidx_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_prachmaskidx);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_prachmaskidx_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_prachmaskidx, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_prachmaskidx_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_prachmaskidx, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_rntitype_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rntitype);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_rntitype_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rntitype, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_rntitype_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_rntitype, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_padding_tree = 
 	    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_padding);
 
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_padding_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_padding, tvb, offset, 2, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_padding_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a_padding, tvb, *offset, 2, ENC_NA);
 
-    offset += 2;
+    *offset += 2;
 
     return tvb_captured_length(tvb);
 }
@@ -527,167 +520,167 @@ static int dissect_fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinf
     return tvb_captured_length(tvb);
 }
 
-static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint offset _U_, guint8 pdu_size _U_)
+static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint *offset _U_, guint8 pdu_size _U_)
 {
-	proto_item *fapi_dlconfig_pdu_info_pduunion_dlschpdu_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu, tvb, offset, pdu_size, ENC_NA);
+	proto_item *fapi_dlconfig_pdu_info_pduunion_dlschpdu_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu, tvb, *offset, pdu_size, ENC_NA);
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_pdulen_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pdulen);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_pdulen_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pdulen, tvb, offset, 2, ENC_BIG_ENDIAN);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_pdulen_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pdulen, tvb, *offset, 2, ENC_BIG_ENDIAN);
 
-	offset += 2;
+	*offset += 2;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_pduidx_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pduidx);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_pduidx_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pduidx, tvb, offset, 2, ENC_BIG_ENDIAN);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_pduidx_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pduidx, tvb, *offset, 2, ENC_BIG_ENDIAN);
 
-	offset += 2;
+	*offset += 2;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_rnti_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rnti);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_rnti_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rnti, tvb, offset, 2, ENC_BIG_ENDIAN);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_rnti_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rnti, tvb, *offset, 2, ENC_BIG_ENDIAN);
 
-	offset += 2;
+	*offset += 2;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_resallocationtype_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_resallocationtype);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_resallocationtype_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_resallocationtype, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_resallocationtype_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_resallocationtype, tvb, *offset, 1, ENC_NA);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_vrbassignment_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_vrbassignment);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_vrbassignment_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_vrbassignment, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_vrbassignment_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_vrbassignment, tvb, *offset, 1, ENC_NA);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_rbcoding_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rbcoding);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_rbcoding_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rbcoding, tvb, offset, 4, ENC_BIG_ENDIAN);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_rbcoding_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rbcoding, tvb, *offset, 4, ENC_BIG_ENDIAN);
 
-	offset += 4;
+	*offset += 4;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_mcs_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_mcs);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_mcs_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_mcs, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_mcs_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_mcs, tvb, *offset, 1, ENC_NA);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_rv_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rv);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_rv_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rv, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_rv_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_rv, tvb, *offset, 1, ENC_NA);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_transportblocks_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transportblocks);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_transportblocks_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transportblocks, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_transportblocks_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transportblocks, tvb, *offset, 1, ENC_NA);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_tb2cwswapflag_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_tb2cwswapflag);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_tb2cwswapflag_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_tb2cwswapflag, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_tb2cwswapflag_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_tb2cwswapflag, tvb, *offset, 1, ENC_NA);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_transmissionscheme_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transmissionscheme);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_transmissionscheme_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transmissionscheme, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_transmissionscheme_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_transmissionscheme, tvb, *offset, 1, ENC_NA);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_numlayers_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numlayers);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_numlayers_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numlayers, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_numlayers_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numlayers, tvb, *offset, 1, ENC_NA);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_numsubbands_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numsubbands);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_numsubbands_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numsubbands, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_numsubbands_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numsubbands, tvb, *offset, 1, ENC_NA);
 
-	guint8 numSubBands = tvb_get_guint8(tvb, offset);
+	guint8 numSubBands = tvb_get_guint8(tvb, *offset);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_uecategory_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_uecategory);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_uecategory_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_uecategory, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_uecategory_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_uecategory, tvb, *offset, 1, ENC_NA);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_pa_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pa);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_pa_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pa, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_pa_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_pa, tvb, *offset, 1, ENC_NA);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_deltapoweroffsetaindex, tvb, *offset, 1, ENC_NA);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_ngap_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_ngap);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_ngap_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_ngap, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_ngap_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_ngap, tvb, *offset, 1, ENC_NA);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_nprb_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_nprb);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_nprb_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_nprb, tvb, offset, 1, ENC_NA);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_nprb_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_nprb, tvb, *offset, 1, ENC_NA);
 
-	offset += 1;
+	*offset += 1;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_numrbpersubband_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numrbpersubband);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_numrbpersubband_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numrbpersubband, tvb, offset, 2, ENC_BIG_ENDIAN);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_numrbpersubband_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numrbpersubband, tvb, *offset, 2, ENC_BIG_ENDIAN);
 
-	offset += 2;
+	*offset += 2;
 
 	proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_numbfvectors_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numbfVector);
-	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_numbfvectors_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numbfVector, tvb, offset, 2, ENC_BIG_ENDIAN);
+	proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_numbfvectors_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_numbfVector, tvb, *offset, 2, ENC_BIG_ENDIAN);
 
-	guint16 numBfVectors = tvb_get_guint16(tvb, offset, ENC_BIG_ENDIAN);
+	guint16 numBfVectors = tvb_get_guint16(tvb, *offset, ENC_BIG_ENDIAN);
 
-	offset += 2;
+	*offset += 2;
 
 	if (numSubBands) {
 
 	   proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_subbandinfo_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_subbandInfo);
-	   proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_subbandinfo_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_subbandInfo, tvb, offset, numSubBands, ENC_BIG_ENDIAN);
+	   proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dlschpdu_subbandinfo_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_subbandInfo, tvb, *offset, numSubBands, ENC_BIG_ENDIAN);
 
-	   offset += numSubBands;
+	   *offset += numSubBands;
         }
 
 	if (numBfVectors) {
 	   guint16 i;
 	   for (i = 0; i < numBfVectors; i++) {
                 proto_tree *fapi_dlconfig_pdu_info_pduunion_dlschpdu_bfvectors_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dlschpdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu_beamformingvectorinfo);
-		dissect_fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo(tvb, pinfo, fapi_dlconfig_pdu_info_pduunion_dlschpdu_bfvectors_tree, data, &offset);
+		dissect_fapi_dlconfig_pdu_info_pduunion_dlschpdu_beamformingvectorinfo(tvb, pinfo, fapi_dlconfig_pdu_info_pduunion_dlschpdu_bfvectors_tree, data, offset);
 	   }
 	}
 	return tvb_captured_length(tvb);
 }
 
-static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint offset _U_, guint8 pdu_size _U_)
+static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint *offset _U_, guint8 pdu_size _U_)
 {
-    guint8 dciFormat = tvb_get_guint8(tvb, offset);
+    guint8 dciFormat = tvb_get_guint8(tvb, *offset);
 
-    proto_item *fapi_dlconfig_pdu_info_pduunion_dcipdu_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu, tvb, offset, pdu_size, ENC_NA);
+    proto_item *fapi_dlconfig_pdu_info_pduunion_dcipdu_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu, tvb, *offset, pdu_size, ENC_NA);
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dciformat_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dciformat);
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dciformat_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dciformat, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dciformat_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dciformat, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_cceindex_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_cceIndex);
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_cceindex_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_cceIndex, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_cceindex_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_cceIndex, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_rnti_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_rnti);
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_rnti_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_rnti, tvb, offset, 2, ENC_BIG_ENDIAN);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_rnti_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_rnti, tvb, *offset, 2, ENC_BIG_ENDIAN);
 
-    offset += 2;
+    *offset += 2;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu);
     proto_item *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_item = 
-	    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu, tvb, offset, pdu_size - 4, ENC_NA);
+	    proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_tree, hf_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu, tvb, *offset, pdu_size - 4, ENC_NA);
 
     switch (dciFormat) {
 	case 0: {
 	    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_tree =
 		    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1);
-	    dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1(tvb, pinfo, fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_tree, data, offset, pdu_size - offset);
+	    dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1(tvb, pinfo, fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1_tree, data, offset, pdu_size - *offset);
 	}
 	case 1: {
 	    proto_tree *fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_tree = 
 		    proto_item_add_subtree(fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_item, ett_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a);
-	    dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a(tvb, pinfo, fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_tree, data, offset, pdu_size - offset);
+	    dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu_dcipdu_1a(tvb, pinfo, fapi_dlconfig_pdu_info_pduunion_dcipdu_dcipdu_1a_tree, data, offset, pdu_size - *offset);
 	}
 	break;
     }
@@ -695,36 +688,36 @@ static int dissect_fapi_dlconfig_req_pdu_info_pduunion_dcipdu(tvbuff_t *tvb, pac
     return tvb_captured_length(tvb);
 }
 
-static int dissect_fapi_dlconfig_pdu_info(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint offset _U_)
+static int dissect_fapi_dlconfig_pdu_info(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint *offset _U_)
 {
     guint8 pdu_type = 0;
     guint8 pdu_size = 0;
 
-    pdu_size = tvb_get_guint8(tvb, offset + 1);
+    pdu_size = tvb_get_guint8(tvb, *offset + 1);
 
-    proto_item *fapi_dlconfig_pdu_info_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info, tvb, offset, pdu_size, ENC_NA);
+    proto_item *fapi_dlconfig_pdu_info_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req_pdu_info, tvb, *offset, pdu_size, ENC_NA);
 
     proto_tree *fapi_dlconfig_pdu_info_pdu_type_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_item, ett_fapi_dlconfig_req_pdu_info_pdutype);
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pdu_type_tree, hf_fapi_dlconfig_req_pdu_info_pdutype, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pdu_type_tree, hf_fapi_dlconfig_req_pdu_info_pdutype, tvb, *offset, 1, ENC_NA);
 
-    pdu_type = tvb_get_guint8(tvb, offset);
+    pdu_type = tvb_get_guint8(tvb, *offset);
 
     proto_item_append_text(fapi_dlconfig_pdu_info_item, " (%s) ", val_to_str_const(pdu_type, dlconfig_req_pdutype_vals, "Unknown (0x%02x)"));
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pdu_size_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_item, ett_fapi_dlconfig_req_pdu_info_pdusize);
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pdu_size_tree, hf_fapi_dlconfig_req_pdu_info_pdusize, tvb, offset, 1, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pdu_size_tree, hf_fapi_dlconfig_req_pdu_info_pdusize, tvb, *offset, 1, ENC_NA);
 
-    offset += 1;
+    *offset += 1;
 
     proto_tree *fapi_dlconfig_pdu_info_pdu_padding_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_item, ett_fapi_dlconfig_req_pdu_info_pdupadding);
-    proto_tree_add_item(fapi_dlconfig_pdu_info_pdu_padding_tree, hf_fapi_dlconfig_req_pdu_info_pdupadding, tvb, offset, 2, ENC_NA);
+    proto_tree_add_item(fapi_dlconfig_pdu_info_pdu_padding_tree, hf_fapi_dlconfig_req_pdu_info_pdupadding, tvb, *offset, 2, ENC_NA);
 
-    offset += 2;
+    *offset += 2;
 
     proto_tree *fapi_dlconfig_pdu_info_pduunion_tree = proto_item_add_subtree(fapi_dlconfig_pdu_info_item, ett_fapi_dlconfig_req_pdu_info_pduunion);
-    proto_item *fapi_dlconfig_pdu_info_pduunion_item = proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_tree, hf_fapi_dlconfig_req_pdu_info_pduunion, tvb, offset, pdu_size - 4, ENC_NA);
+    proto_item *fapi_dlconfig_pdu_info_pduunion_item = proto_tree_add_item(fapi_dlconfig_pdu_info_pduunion_tree, hf_fapi_dlconfig_req_pdu_info_pduunion, tvb, *offset, pdu_size - 4, ENC_NA);
 
     switch (pdu_type) {
 	    case 0: {
@@ -740,13 +733,13 @@ static int dissect_fapi_dlconfig_pdu_info(tvbuff_t *tvb, packet_info *pinfo, pro
 		    break;
     } /* switch (pdu_type) */
 
-    offset += (pdu_size - 4);
+    /* *offset += (pdu_size - 4); */
 
     return tvb_captured_length(tvb);
 }
  
 
-static int dissect_fapi_dlconfig_req(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint offset _U_) 
+static int dissect_fapi_dlconfig_req(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint *offset _U_) 
 {
 	guint16 txPowerForPCFICH;
         guint16 i;
@@ -754,101 +747,96 @@ static int dissect_fapi_dlconfig_req(tvbuff_t *tvb, packet_info *pinfo, proto_tr
 	guint16 dlconfig_len = 0;
 
 
-	dlconfig_len = tvb_get_guint16(tvb, offset + 2, ENC_BIG_ENDIAN);
+	dlconfig_len = tvb_get_guint16(tvb, *offset + 2, ENC_BIG_ENDIAN);
 
-        proto_item *fapi_dlconfig_req_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req, tvb, offset, dlconfig_len, ENC_NA);
+        proto_item *fapi_dlconfig_req_item = proto_tree_add_item(tree, hf_fapi_dlconfig_req, tvb, *offset, dlconfig_len, ENC_NA);
 
         proto_tree *fapi_dlconfig_req_sfnsf_tree = proto_item_add_subtree(fapi_dlconfig_req_item, ett_fapi_subframe_ind_sfnsf);
 
         dissect_fapi_subframe_sfnsf(tvb, pinfo, fapi_dlconfig_req_sfnsf_tree, data, offset);
 
-	offset += 2;
-
         proto_item_add_subtree(fapi_dlconfig_req_item, ett_fapi_dlconfig_req_len);
-        proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_len, tvb, offset, 2, ENC_BIG_ENDIAN);
+        proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_len, tvb, *offset, 2, ENC_BIG_ENDIAN);
         
-        offset += 2;
+        *offset += 2;
 
         proto_item_add_subtree(fapi_dlconfig_req_item, ett_fapi_dlconfig_req_cfi);
-        proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_cfi, tvb, offset, 1, ENC_NA);
+        proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_cfi, tvb, *offset, 1, ENC_NA);
 
-        offset += 1;
+        *offset += 1;
 
         proto_item_add_subtree(fapi_dlconfig_req_item, ett_fapi_dlconfig_req_numDCI);
-        proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_numDCI, tvb, offset, 1, ENC_NA);
+        proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_numDCI, tvb, *offset, 1, ENC_NA);
 
-        offset += 1;
+        *offset += 1;
 
         proto_item_add_subtree(fapi_dlconfig_req_item, ett_fapi_dlconfig_req_numOfPDU);
-        proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_numOfPDU, tvb, offset, 2, ENC_BIG_ENDIAN);
+        proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_numOfPDU, tvb, *offset, 2, ENC_BIG_ENDIAN);
 
-        numOfPDU = tvb_get_guint16(tvb, offset, ENC_BIG_ENDIAN);
+        numOfPDU = tvb_get_guint16(tvb, *offset, ENC_BIG_ENDIAN);
 
-        offset += 2;
+        *offset += 2;
 
         proto_item_add_subtree(fapi_dlconfig_req_item, ett_fapi_dlconfig_req_txPowerForPCFICH);
         proto_item *fapi_dlconfig_req_txPowerForPCFICH_item = 
-                proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_txPowerForPCFICH, tvb, offset, 2, ENC_BIG_ENDIAN);
+                proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_txPowerForPCFICH, tvb, *offset, 2, ENC_BIG_ENDIAN);
 
-        txPowerForPCFICH =  tvb_get_guint16(tvb, offset, ENC_BIG_ENDIAN);
+        txPowerForPCFICH =  tvb_get_guint16(tvb, *offset, ENC_BIG_ENDIAN);
         proto_item_append_text(fapi_dlconfig_req_txPowerForPCFICH_item, " (%g dBm)", (float)(txPowerForPCFICH - 6000)/1000);
 
-        offset += 2;
+        *offset += 2;
 
         proto_item_add_subtree(fapi_dlconfig_req_item, ett_fapi_dlconfig_req_numOfPDSCHRNTI);
-        proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_numOfPDSCHRNTI, tvb, offset, 1, ENC_NA);
+        proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_numOfPDSCHRNTI, tvb, *offset, 1, ENC_NA);
 
-        offset += 1;
+        *offset += 1;
 
         proto_item_add_subtree(fapi_dlconfig_req_item, ett_fapi_dlconfig_req_padding);
-        proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_padding, tvb, offset, 1, ENC_NA);
+        proto_tree_add_item(fapi_dlconfig_req_item, hf_fapi_dlconfig_req_padding, tvb, *offset, 1, ENC_NA);
 
-        offset += 1;
+        *offset += 1;
         
         for (i = 0; i < numOfPDU; i++) {
             proto_tree *fapi_dlconfig_req_pdu_info_tree = proto_item_add_subtree(fapi_dlconfig_req_item, ett_fapi_dlconfig_req_pdu_info);
 
-	    guint8 pdu_size = tvb_get_guint8(tvb, offset + 1);
-
             dissect_fapi_dlconfig_pdu_info(tvb, pinfo, fapi_dlconfig_req_pdu_info_tree, data, offset);
-
-	    offset += pdu_size;
         }
 
 	/* 
 	 * There seems to be an issue with encoding of the size of dl config request
 	 *
-	 * if (numOfPDU) offset += 4; 
+	 * if (numOfPDU) *offset += 4; 
 	 */
         return tvb_captured_length(tvb);
 }
  
-static int dissect_fapi_subframe_ind(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint offset _U_)
+static int dissect_fapi_subframe_ind(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint *offset _U_)
 {
-        proto_item *fapi_subframe_ind_item = proto_tree_add_item(tree, hf_fapi_subframe_ind, tvb, offset, 4, ENC_NA);
+        proto_item *fapi_subframe_ind_item = proto_tree_add_item(tree, hf_fapi_subframe_ind, tvb, *offset, 4, ENC_NA);
 
         proto_tree *fapi_subframe_ind_sfnsf_tree = proto_item_add_subtree(fapi_subframe_ind_item, ett_fapi_subframe_ind_sfnsf);
 
         dissect_fapi_subframe_sfnsf(tvb, pinfo, fapi_subframe_ind_sfnsf_tree, data, offset);
         /*
-        proto_item *fapi_subframe_ind_sfnsf_item = proto_tree_add_item(fapi_subframe_ind_sfnsf_tree, hf_fapi_subframe_ind_sfnsf, tvb, offset, 2, ENC_NA);
+        proto_item *fapi_subframe_ind_sfnsf_item = proto_tree_add_item(fapi_subframe_ind_sfnsf_tree, hf_fapi_subframe_ind_sfnsf, tvb, *offset, 2, ENC_NA);
 
         proto_tree *fapi_subframe_ind_sfnsf_sfn_tree = proto_item_add_subtree(fapi_subframe_ind_sfnsf_item, ett_fapi_subframe_ind_sfnsf_sfn);
-        proto_tree_add_item(fapi_subframe_ind_sfnsf_sfn_tree, hf_fapi_subframe_ind_sfnsf_sfn, tvb, offset, 2, ENC_BIG_ENDIAN);
+        proto_tree_add_item(fapi_subframe_ind_sfnsf_sfn_tree, hf_fapi_subframe_ind_sfnsf_sfn, tvb, *offset, 2, ENC_BIG_ENDIAN);
 
         proto_tree *fapi_subframe_ind_sfnsf_sf_tree = proto_item_add_subtree(fapi_subframe_ind_sfnsf_item, ett_fapi_subframe_ind_sfnsf_sf);
-        proto_tree_add_item(fapi_subframe_ind_sfnsf_sf_tree, hf_fapi_subframe_ind_sfnsf_sf, tvb, offset, 2, ENC_BIG_ENDIAN);
+        proto_tree_add_item(fapi_subframe_ind_sfnsf_sf_tree, hf_fapi_subframe_ind_sfnsf_sf, tvb, *offset, 2, ENC_BIG_ENDIAN);
 
+        *offset += 2;
          */
-        offset += 2;
 
         proto_tree *fapi_subframe_ind_padding_tree = proto_item_add_subtree(fapi_subframe_ind_item, ett_fapi_subframe_ind_padding);
-        proto_tree_add_item(fapi_subframe_ind_padding_tree, hf_fapi_subframe_ind_padding, tvb, offset, 2, ENC_BIG_ENDIAN);
+        proto_tree_add_item(fapi_subframe_ind_padding_tree, hf_fapi_subframe_ind_padding, tvb, *offset, 2, ENC_BIG_ENDIAN);
 
-        offset += 2;
+        *offset += 2;
 
         return tvb_captured_length(tvb);
 }
+
 static int dissect_fapi(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_)
 {
     guint8 msg_id = tvb_get_guint8(tvb, 0);
@@ -885,12 +873,13 @@ static int dissect_fapi(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_,
         proto_tree *fapi_message_body = proto_item_add_subtree(fapi_message_item, ett_fapi_message_body);
         /*
          */
+	guint loffset = offset;
         switch (msg_id) {
             case 0x80:
-                    dissect_fapi_dlconfig_req(tvb, pinfo, fapi_message_body, data, offset);
+                    dissect_fapi_dlconfig_req(tvb, pinfo, fapi_message_body, data, &loffset);
                     break;
             case 0x82:
-                    dissect_fapi_subframe_ind(tvb, pinfo, fapi_message_body, data, offset);
+                    dissect_fapi_subframe_ind(tvb, pinfo, fapi_message_body, data, &loffset);
                     break;
             default: {
                     proto_item *fapi_message_body_item = proto_tree_add_item(fapi_message_body, hf_fapi_message_body, tvb, offset, msg_len, ENC_NA);
