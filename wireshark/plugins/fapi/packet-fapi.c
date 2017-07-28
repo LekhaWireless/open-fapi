@@ -906,6 +906,11 @@ static int dissect_fapi_ulconfig_pdu_info(tvbuff_t *tvb, packet_info *pinfo, pro
 
     *offset += 1;
 
+    proto_tree *fapi_ulconfig_pdu_info_pdu_padding_tree = proto_item_add_subtree(fapi_ulconfig_pdu_info_item, ett_fapi_ulconfig_req_pdu_info_padding);
+    proto_tree_add_item(fapi_ulconfig_pdu_info_pdu_padding_tree, hf_fapi_ulconfig_req_pdu_info_padding, tvb, *offset, 2, ENC_NA);
+
+    *offset += 2;
+
     proto_tree *fapi_ulconfig_pdu_info_pduconfiginfo_tree = proto_item_add_subtree(fapi_ulconfig_pdu_info_item, ett_fapi_ulconfig_req_pdu_info_pduconfiginfo);
     proto_item *fapi_ulconfig_pdu_info_pduconfiginfo_item = proto_tree_add_item(fapi_ulconfig_pdu_info_pduconfiginfo_tree, hf_fapi_ulconfig_req_pdu_info_pduconfiginfo, tvb, *offset, pdu_size - 2, ENC_NA);
 
@@ -921,7 +926,7 @@ static int dissect_fapi_ulconfig_pdu_info(tvbuff_t *tvb, packet_info *pinfo, pro
             break;
 	    case 4: { //UCI CQI
                 proto_tree *fapi_ulconfig_pdu_info_pduconfiginfo_cqipdu_tree = proto_item_add_subtree(fapi_ulconfig_pdu_info_pduconfiginfo_item, ett_fapi_ulconfig_req_pdu_info_pduconfiginfo_cqipdu);
-	        dissect_fapi_ulconfig_req_pdu_info_pduconfiginfo_cqipdu(tvb, pinfo, fapi_ulconfig_pdu_info_pduconfiginfo_cqipdu_tree, data, offset, pdu_size - 2);
+	        dissect_fapi_ulconfig_req_pdu_info_pduconfiginfo_cqipdu(tvb, pinfo, fapi_ulconfig_pdu_info_pduconfiginfo_cqipdu_tree, data, offset, pdu_size);
             }
             break;
     }
@@ -977,8 +982,6 @@ static int dissect_fapi_dlconfig_pdu_info(tvbuff_t *tvb, packet_info *pinfo, pro
 	    default:
 		    break;
     } /* switch (pdu_type) */
-
-    /* *offset += (pdu_size - 4); */
 
     return tvb_captured_length(tvb);
 }
@@ -1040,7 +1043,6 @@ static int dissect_fapi_dlconfig_req(tvbuff_t *tvb, packet_info *pinfo, proto_tr
         guint16 i;
 	guint16 numOfPDU;
 	guint16 dlconfig_len = 0;
-
 
 	dlconfig_len = tvb_get_guint16(tvb, *offset + 2, ENC_BIG_ENDIAN);
 
