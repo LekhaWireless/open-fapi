@@ -175,6 +175,15 @@ static int hf_fapi_rxulsch_ind_datapduinfo_ulcqi								= -1;
 static int hf_fapi_rxulsch_ind_datapduinfo_padding								= -1;
 static int hf_fapi_rxulsch_ind_datapduinfo_data									= -1;
 
+static int hf_fapi_ulcrc_ind											= -1;
+static int hf_fapi_ulcrc_ind_sfnsf										= -1;
+static int hf_fapi_ulcrc_ind_numofcrc										= -1;
+static int hf_fapi_ulcrc_ind_crcpdu										= -1;
+static int hf_fapi_ulcrc_ind_crcpdu_handle									= -1;
+static int hf_fapi_ulcrc_ind_crcpdu_rnti									= -1;
+static int hf_fapi_ulcrc_ind_crcpdu_crcflag									= -1;
+static int hf_fapi_ulcrc_ind_crcpdu_padding									= -1;
+
 static gint ett_fapi_message_type                       = -1;
 static gint ett_fapi_message_len                        = -1;
 static gint ett_fapi_message_vendor_tlv_len             = -1;
@@ -343,6 +352,16 @@ static gint ett_fapi_rxulsch_ind_datapduinfo_ulcqi								= -1;
 static gint ett_fapi_rxulsch_ind_datapduinfo_padding								= -1;
 static gint ett_fapi_rxulsch_ind_datapduinfo_data								= -1;
 
+static gint ett_fapi_ulcrc_ind											= -1;
+static gint ett_fapi_ulcrc_ind_sfnsf										= -1;
+static gint ett_fapi_ulcrc_ind_numofcrc										= -1;
+static gint ett_fapi_ulcrc_ind_crcpdu										= -1;
+static gint ett_fapi_ulcrc_ind_crcpdu_handle									= -1;
+static gint ett_fapi_ulcrc_ind_crcpdu_rnti									= -1;
+static gint ett_fapi_ulcrc_ind_crcpdu_crcflag									= -1;
+static gint ett_fapi_ulcrc_ind_crcpdu_padding									= -1;
+
+
 static const value_string message_id_vals[] = {
     { 0x00, "PARAM.request" },
     { 0x01, "PARAM.response" },
@@ -443,6 +462,11 @@ static const value_string ulconfig_req_pdutype_vals[] = {
 	{10, "UCI CQI SR HARQ"},
 	{11, "SRS"},
 	{12, "HARQ BUFFER"},
+};
+
+static const value_string ulcrc_ind_crcflag_vals[] = {
+	{0, "PASS"},
+	{1, "FAIL"},
 };
 
 static int dissect_fapi_subframe_sfnsf(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint *offset _U_)
@@ -1153,7 +1177,7 @@ static int dissect_fapi_dlconfig_pdu_info(tvbuff_t *tvb, packet_info *pinfo, pro
 	        dissect_fapi_dlconfig_req_pdu_info_pduunion_dlschpdu(tvb, pinfo, fapi_dlconfig_pdu_info_pduunion_dlschpdu_tree, data, offset, pdu_size - 4);
 	    }
 	    default:
-		    break;
+	    break;
     } /* switch (pdu_type) */
 
     return tvb_captured_length(tvb);
@@ -1308,6 +1332,58 @@ static int dissect_fapi_rxulsch_ind(tvbuff_t *tvb, packet_info *pinfo, proto_tre
         *offset = data_offset;
 
 	return tvb_captured_length(tvb);
+}
+
+static int dissect_fapi_ulcrc_ind_crcpdu(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint *offset _U_, guint pdu_size _U_) 
+{
+    proto_item *fapi_ulcrc_ind_crcpdu_item = proto_tree_add_item(tree, hf_fapi_ulcrc_ind_crcpdu, tvb,  *offset, pdu_size, ENC_NA);
+
+    proto_tree *fapi_ulcrc_ind_crcpdu_handle_tree = proto_item_add_subtree(fapi_ulcrc_ind_crcpdu_item, ett_fapi_ulcrc_ind_crcpdu_handle);
+    proto_tree_add_item(fapi_ulcrc_ind_crcpdu_handle_tree, hf_fapi_ulcrc_ind_crcpdu_handle, tvb, *offset, 4, ENC_BIG_ENDIAN);
+
+    *offset += 4;
+
+    proto_tree *fapi_ulcrc_ind_crcpdu_rnti_tree = proto_item_add_subtree(fapi_ulcrc_ind_crcpdu_item, ett_fapi_ulcrc_ind_crcpdu_rnti);
+    proto_tree_add_item(fapi_ulcrc_ind_crcpdu_rnti_tree, hf_fapi_ulcrc_ind_crcpdu_rnti, tvb, *offset, 2, ENC_BIG_ENDIAN);
+
+    *offset += 2;
+
+    proto_tree *fapi_ulcrc_ind_crcpdu_crcflag_tree = proto_item_add_subtree(fapi_ulcrc_ind_crcpdu_item, ett_fapi_ulcrc_ind_crcpdu_crcflag);
+    proto_tree_add_item(fapi_ulcrc_ind_crcpdu_crcflag_tree, hf_fapi_ulcrc_ind_crcpdu_crcflag, tvb, *offset, 1, ENC_NA);
+
+    *offset += 1;
+
+    proto_tree *fapi_ulcrc_ind_crcpdu_padding_tree = proto_item_add_subtree(fapi_ulcrc_ind_crcpdu_item, ett_fapi_ulcrc_ind_crcpdu_padding);
+    proto_tree_add_item(fapi_ulcrc_ind_crcpdu_padding_tree, hf_fapi_ulcrc_ind_crcpdu_padding, tvb, *offset, 1, ENC_NA);
+
+    *offset += 1;
+
+    return tvb_captured_length(tvb);
+}
+
+static int dissect_fapi_ulcrc_ind(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint *offset _U_, guint pdu_size _U_) 
+{
+    proto_item *fapi_ulcrc_ind_item = proto_tree_add_item(tree, hf_fapi_ulcrc_ind, tvb, *offset, pdu_size, ENC_NA);
+
+    proto_tree *fapi_ulcrc_ind_sfnsf_tree = proto_item_add_subtree(fapi_ulcrc_ind_item, ett_fapi_ulcrc_ind_sfnsf);
+
+    dissect_fapi_subframe_sfnsf(tvb, pinfo, fapi_ulcrc_ind_sfnsf_tree, data, offset);
+
+    proto_tree *fapi_ulcrc_ind_numofcrc_tree = proto_item_add_subtree(fapi_ulcrc_ind_item, ett_fapi_ulcrc_ind_numofcrc);
+    proto_tree_add_item(fapi_ulcrc_ind_numofcrc_tree, hf_fapi_ulcrc_ind_numofcrc, tvb, *offset, 2, ENC_BIG_ENDIAN);
+
+    guint16 numOfCrc = tvb_get_guint16(tvb, *offset, ENC_BIG_ENDIAN);
+
+    *offset += 2;
+
+    gint16 i;
+    for (i = 0; i < numOfCrc; i++) {
+	    proto_tree  *fapi_ulcrc_ind_crcpdu_tree = proto_item_add_subtree(fapi_ulcrc_ind_item, ett_fapi_ulcrc_ind_crcpdu);
+
+	    dissect_fapi_ulcrc_ind_crcpdu(tvb, pinfo, fapi_ulcrc_ind_crcpdu_tree, data, offset, pdu_size - 4);
+    }
+
+    return tvb_captured_length(tvb);
 }
 
 static int dissect_fapi_dldatatx_req(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_, void *data _U_, guint *offset _U_, guint pdu_size _U_) 
@@ -1534,6 +1610,9 @@ static int dissect_fapi(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree _U_,
 	    case 0x84:
 		    dissect_fapi_dldatatx_req(tvb, pinfo, fapi_message_body, data, &loffset, msg_len);
 		    break;
+            case 0x86:
+		    dissect_fapi_ulcrc_ind(tvb, pinfo, fapi_message_body, data, &loffset, msg_len);
+		    break;
 	    case 0x87:
 		    dissect_fapi_rxulsch_ind(tvb, pinfo, fapi_message_body, data, &loffset, msg_len);
 		    break;
@@ -1726,6 +1805,15 @@ proto_register_fapi(void)
 	{ &hf_fapi_rxulsch_ind_datapduinfo_padding, {"padding", "fapi.rxulsch_ind.dataPduInfo.padding", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL } },
 	{ &hf_fapi_rxulsch_ind_datapduinfo_data, {"data", "fapi.rxulsch_ind.dataPduInfo.data", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL } },
 	{ &hf_fapi_rxulsch_ind_pdubuffer, {"pduBuffer", "fapi.rxulsch_ind.pduBuffer", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL } },
+
+	{ &hf_fapi_ulcrc_ind, {"ul crc ind", "fapi.ulcrc_ind", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_ulcrc_ind_sfnsf, {"sfnsf", "fapi.ulcrc_ind.sfnsf", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_ulcrc_ind_numofcrc, {"numOfCrc", "fapi.ulcrc_ind.numOfCrc", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_ulcrc_ind_crcpdu, {"crcPduInfo", "fapi.ulcrc_ind.crcPduInfo", FT_NONE, BASE_NONE, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_ulcrc_ind_crcpdu_handle, {"handle", "fapi.ulcrc_ind.crcPduInfo.handle", FT_UINT32, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_ulcrc_ind_crcpdu_rnti, {"rnti", "fapi.ulcrc_ind.crcPduInfo.rnti", FT_UINT16, BASE_DEC, NULL, 0x0, NULL, HFILL } },
+	{ &hf_fapi_ulcrc_ind_crcpdu_crcflag, {"crcFlag", "fapi.ulcrc_ind.crcPduInfo.crcflag", FT_UINT8, BASE_DEC, (const void *)&ulcrc_ind_crcflag_vals, 0x0, NULL, HFILL } },
+	{ &hf_fapi_ulcrc_ind_crcpdu_padding, {"padding", "fapi.ulcrc_ind.crcPduInfo.padding", FT_BYTES, BASE_NONE, NULL, 0x0, NULL, HFILL } },
     };
 
     static gint *ett[] = {
@@ -1899,6 +1987,15 @@ proto_register_fapi(void)
 	&ett_fapi_rxulsch_ind_datapduinfo_ulcqi,
 	&ett_fapi_rxulsch_ind_datapduinfo_padding,
 	&ett_fapi_rxulsch_ind_datapduinfo_data,
+
+	&ett_fapi_ulcrc_ind,
+	&ett_fapi_ulcrc_ind_sfnsf,
+	&ett_fapi_ulcrc_ind_numofcrc,
+	&ett_fapi_ulcrc_ind_crcpdu,
+	&ett_fapi_ulcrc_ind_crcpdu_handle,
+	&ett_fapi_ulcrc_ind_crcpdu_rnti,
+	&ett_fapi_ulcrc_ind_crcpdu_crcflag,
+	&ett_fapi_ulcrc_ind_crcpdu_padding,
     };
 
     proto_fapi = proto_register_protocol ("FAPI", "FAPI", "fapi");
